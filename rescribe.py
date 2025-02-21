@@ -76,6 +76,9 @@ def start_recording():
         device_info = p.get_default_input_device_info()
     except IOError:
         print("❌ No input device found!")
+        update_tray_state('error', "Error: No input device found")
+        time.sleep(3)  # Show error state briefly
+        update_tray_state('ready')
         return
 
     print(f"🎤 Using device: {device_info['name']}")
@@ -142,6 +145,9 @@ def transcribe_audio(filename="temp.wav"):
         result = pipe(filename)
     except Exception as e:
         print(f"❌ Error transcribing audio: {e}")
+        update_tray_state('error', f"Error: {str(e)}")
+        time.sleep(3)  # Show error state briefly
+        update_tray_state('ready')
         return ""
     
     text = result.get("text", "").strip()
@@ -224,8 +230,8 @@ def create_circle_icon(color, size=64):
 icon_ready = create_circle_icon("green")
 icon_recording = create_circle_icon("red")
 icon_loading = create_circle_icon("yellow")
-icon_error = create_circle_icon("#666666")  # Gray
-icon_transcribing = create_circle_icon("orange")  # Orange for processing state
+icon_error = create_circle_icon("black") 
+icon_transcribing = create_circle_icon("orange")
 
 # Initialize tray icon
 tray_icon = pystray.Icon(
