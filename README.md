@@ -63,8 +63,19 @@ Linux/MacOS support may be added in the future.
 
 3. Create environment and install dependencies:
    ```powershell
+   # Create and activate virtual environment
    uv venv
+   .\.venv\Scripts\activate
+
+   # First install PyTorch with CUDA support
+   uv pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu124
+
+   # Then install remaining dependencies
    uv pip install -r requirements.txt
+
+   # Note: To remove the environment if needed:
+   # deactivate  # if environment is active
+   # Remove-Item -Recurse -Force .venv
    ```
 
 ## Usage
