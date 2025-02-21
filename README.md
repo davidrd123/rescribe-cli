@@ -1,6 +1,6 @@
 # Rescribe CLI
 
-A system tray application that converts speech to text using OpenAI's Whisper Large V3 Turbo model. Record audio with a hotkey and get instant transcription copied to your clipboard.
+A Windows system tray application that converts speech to text using OpenAI's Whisper Large V3 Turbo model. Record audio with a hotkey and get instant transcription copied to your clipboard.
 
 ## Features
 
@@ -16,6 +16,7 @@ A system tray application that converts speech to text using OpenAI's Whisper La
 
 ## Requirements
 
+- Windows 10/11
 - Python 3.8+
 - CUDA-compatible GPU (recommended) or CPU
 - PyTorch
@@ -30,6 +31,16 @@ A system tray application that converts speech to text using OpenAI's Whisper La
   Pillow
   ```
 
+## Platform Support
+
+Currently, this application is designed for Windows only. The following features are Windows-specific:
+- System tray integration
+- Global hotkey capture
+- Background service setup
+- Startup configuration
+
+Linux/MacOS support may be added in the future.
+
 ## Installation
 
 1. Clone the repository:
@@ -38,22 +49,41 @@ A system tray application that converts speech to text using OpenAI's Whisper La
    cd rescribe-cli
    ```
 
-2. Install dependencies:
+2. Install Poetry (if not already installed):
    ```bash
-   pip install -r requirements.txt
+   # Windows (Powershell)
+   (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+   ```
+
+3. Install dependencies:
+   ```bash
+   poetry install
    ```
 
 ## Usage
 
-1. Run the application:
-   ```bash
-   python speech_to_text.py
-   ```
+### Command Line
+```bash
+poetry run python rescribe.py
+```
 
-2. The application will appear in your system tray
-3. Press F9 to start recording
-4. Press F9 again to stop recording and begin transcription
-5. The transcribed text will automatically copy to your clipboard
+### Windows Background Service Setup
+To run the application in the background without a console window:
+
+1. Right-click on your desktop → New → Shortcut
+2. For the location, enter:
+   ```
+   "C:\Path\To\Your\.venv\Scripts\pythonw.exe" "C:\Path\To\Your\rescribe.py"
+   ```
+   Replace the paths with your actual Poetry venv location (use `poetry env info --path` to find it)
+3. Name the shortcut (e.g., "Rescribe")
+4. Optional: Copy the shortcut to your startup folder (`Win + R` → `shell:startup`) to run at system startup
+
+Once running:
+1. The application will appear in your system tray
+2. Press F9 to start recording
+3. Press F9 again to stop recording and begin transcription
+4. The transcribed text will automatically copy to your clipboard
 
 ## Technical Details
 
