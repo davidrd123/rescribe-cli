@@ -1,5 +1,6 @@
-torch==2.6.0+cu124
-torchaudio==2.6.0+cu124
+--index-url https://download.pytorch.org/whl/cu124
+torch==2.6.0
+torchaudio==2.6.0
 transformers==4.48.3
 pyaudio==0.2.14
 keyboard==0.13.5
