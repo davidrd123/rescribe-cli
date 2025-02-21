@@ -1,1 +1,8 @@
- 
+torch==2.6.0+cu124
+torchaudio==2.6.0+cu124
+transformers==4.48.3
+pyaudio==0.2.14
+keyboard==0.13.5
+pyperclip==1.9.0
+pystray==0.19.5
+pillow==11.0.0 
