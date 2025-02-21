@@ -50,13 +50,25 @@ Linux/MacOS support may be added in the future.
    ```
 
 2. Install Poetry (if not already installed):
-   ```bash
+   ```powershell
    # Windows (Powershell)
    (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
    ```
 
-3. Install dependencies:
-   ```bash
+3. Verify Poetry installation and environment:
+   ```powershell
+   # Check Poetry version
+   poetry --version
+   
+   # See which environment Poetry is using
+   poetry env info
+   
+   # If you have an existing .venv, you might want to remove it first
+   Remove-Item -Recurse -Force .venv  # Optional: only if you want to start fresh
+   ```
+
+4. Install dependencies:
+   ```powershell
    poetry install
    ```
 
@@ -64,6 +76,10 @@ Linux/MacOS support may be added in the future.
 
 ### Command Line
 ```bash
+# Check your Poetry environment
+poetry env info
+
+# Run the application
 poetry run python rescribe.py
 ```
 
