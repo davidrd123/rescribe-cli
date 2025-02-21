@@ -16,7 +16,7 @@ A Windows system tray application that converts speech to text using OpenAI's Wh
   - 🔴 Red: Recording
   - 🟡 Yellow: Loading model
   - 🟠 Orange: Transcribing
-  - ⚫ Gray: Error
+  - ⚪ Gray: Error
 
 ## Requirements
 
