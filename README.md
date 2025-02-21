@@ -22,8 +22,7 @@ A Windows system tray application that converts speech to text using OpenAI's Wh
 
 - Windows 10/11
 - Python 3.8+
-- CUDA-compatible GPU (recommended) or CPU
-- PyTorch
+- CUDA-compatible GPU 
 - Required Python packages:
   ```
   torch
